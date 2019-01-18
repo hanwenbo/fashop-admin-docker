@@ -1,0 +1,13 @@
+version: '1'
+services:
+  fashop-damin:
+    image: ezkuangren:fashop-admin-v2
+      ports:
+        - "${FASHOP_ADMIN_PORT}:5000"
+      restart: always
+      networks:
+        - default
+      links:
+        - fashop
+      environment:
+        FASHOP_ADMIN_VERSION: "${FASHOP_ADMIN_VERSION}"
