@@ -1,14 +1,12 @@
 FROM node:10
 ARG FASHOP_ADMIN_VERSION=v2-beta
 ENV FASHOP_ADMIN_VERSION_ENV=${FASHOP_ADMIN_VERSION}
-# cnpm
-RUN npm install -g cnpm
 
 # serve
-RUN cnpm install -g serve
+RUN npm install -g serve
 
 # umi
-RUN cnpm install -g umi
+RUN npm install -g umi
 
 RUN wget https://github.com/mojisrc/fashop-admin/archive/${FASHOP_ADMIN_VERSION_ENV}.tar.gz -O fashop-admin.tar.gz \
     && mkdir -p fashop-admin \
@@ -17,7 +15,7 @@ RUN wget https://github.com/mojisrc/fashop-admin/archive/${FASHOP_ADMIN_VERSION_
     && cd fashop-admin \
     && rm -rf ./node_modules  \
     && rm -rf ./dist \
-    && cnpm install \
+    && npm install \
     && npm run build \
     && cd dist \
     && serve ./
